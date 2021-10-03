@@ -27,13 +27,21 @@ function App() {
 
   //handle the changes in the select
   function handleChange(e) {
-    console.log(e.target.value);
-
     e.preventDefault();
     const cityId = e.target.value;
     setCities({ ...cities, cityId: cityId });
-    console.log(cities);
   }
+  const fetchWeather = async () => {
+    const result = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?id=${cities.cityId}&appid=538882fc8387290c6cee83f313a6acf5`
+    );
+    console.log('weatherdata:', result);
+  };
+
+  //useEffect
+  useEffect(() => {
+    fetchWeather();
+  }, []);
 
   return (
     <div className="app">
