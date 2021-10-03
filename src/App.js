@@ -27,6 +27,8 @@ function App() {
   });
   //state for a city weather
   const [cityWeather, setCityWeather] = useState({});
+  //state to forcast the future hours for a city
+  const [forcastHourly, setForcastHourly] = useState({});
 
   //handle the changes in the select
   function handleChange(e) {
@@ -54,6 +56,13 @@ function App() {
     // console.log('weather of the city', cityWeather);
     // console.log('from line 54=>', cityWeather);
   };
+  const weatherForcast = async () => {
+    const result =
+      await axios.get(`http://api.openweathermap.org/data/2.5/forecast?id=${cities.cityId}&units=metric&appid=538882fc8387290c6cee83f313a6acf5
+    `);
+    console.log('weather forcast:', result.data);
+    setForcastHourly(result.data);
+  };
 
   useEffect(() => {
     fetchWeather();
@@ -63,6 +72,7 @@ function App() {
     fetchWeather();
   }, [cities]);
 
+  //extract the time from dt system and change 24 hrs to 12
   function convertDt(dt) {
     const date = new Date(dt * 1000);
     const hour = date.getHours();
@@ -100,7 +110,9 @@ function App() {
           <p>feels like: {Math.floor(cityWeather.main.feels_like)} °c</p>
           <p>humidity: {Math.floor(cityWeather.main.humidity)}</p>
 
-          {/* {console.log('from line 76==>', cityWeather.weather[0].main)} */}
+          <button className="see-forcast" onClick={weatherForcast}>
+            See forcast
+          </button>
         </div>
       )}
     </div>
