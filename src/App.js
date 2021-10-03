@@ -37,7 +37,7 @@ function App() {
   }
   const fetchWeather = async () => {
     const result = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?id=${cities.cityId}&appid=538882fc8387290c6cee83f313a6acf5`
+      `https://api.openweathermap.org/data/2.5/weather?id=${cities.cityId}&units=metric&appid=538882fc8387290c6cee83f313a6acf5`
     );
     // console.log('weatherdata:', result.data);
     // setState(state => ({ ...state, left: e.pageX, top: e.pageY }));
@@ -45,22 +45,35 @@ function App() {
     //   ...cityWeather,
     //   cityWeather: result.data,
     // }));
-    setCityWeather({ cityWeather: result.data });
+    // setCityWeather({ cityWeather: result.data });
+    setCityWeather(result.data);
     // setCityWeather((cityWeather) => ({
     //   ...cityWeather,
     //   cityWeather: result.data,
     // }));
     // console.log('weather of the city', cityWeather);
+    // console.log('from line 54=>', cityWeather);
   };
 
   useEffect(() => {
     fetchWeather();
-  }, [cities]);
-  //useEffect
-  // useEffect(() => {
-  //   fetchWeather();
-  // }, [cities]);
+  }, []);
 
+  useEffect(() => {
+    fetchWeather();
+  }, [cities]);
+
+  function convertDt(dt) {
+    const date = new Date(dt * 1000);
+    const hour = date.getHours();
+    let time = '';
+    if (hour > 12) {
+      time = hour - 12 + ' pm';
+    } else {
+      time = hour + ' am';
+    }
+    return time;
+  }
   return (
     <div className="app">
       <select onChange={(e) => handleChange(e)}>
@@ -71,9 +84,25 @@ function App() {
         ))}
       </select>
 
-      <div className="city-weather">
-        {/* <p>{result.data.weather.main}</p> */}
-      </div>
+      {cityWeather.name && (
+        <div className="city-weather">
+          {/* <p>Toronto</p> */}
+          <p>time: {convertDt(cityWeather.dt)}</p>
+
+          <p>{cityWeather.weather[0].description}</p>
+          {/* <p>{cityWeather.weather[0].icon}</p> */}
+
+          <p>{Math.floor(cityWeather.main.temp)} °c</p>
+          <p>
+            <span>Min : {Math.floor(cityWeather.main.temp_min)} </span>
+            <span>Max : {Math.floor(cityWeather.main.temp_max)}</span>
+          </p>
+          <p>feels like: {Math.floor(cityWeather.main.feels_like)} °c</p>
+          <p>humidity: {Math.floor(cityWeather.main.humidity)}</p>
+
+          {/* {console.log('from line 76==>', cityWeather.weather[0].main)} */}
+        </div>
+      )}
     </div>
   );
 }
