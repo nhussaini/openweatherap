@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  //state for cities
   const [cities, setCities] = useState({
     cityId: 6167865,
     cityInfo: [
@@ -24,6 +25,8 @@ function App() {
       },
     ],
   });
+  //state for a city weather
+  const [cityWeather, setCityWeather] = useState({});
 
   //handle the changes in the select
   function handleChange(e) {
@@ -36,13 +39,27 @@ function App() {
     const result = await axios.get(
       `https://api.openweathermap.org/data/2.5/weather?id=${cities.cityId}&appid=538882fc8387290c6cee83f313a6acf5`
     );
-    console.log('weatherdata:', result);
+    // console.log('weatherdata:', result.data);
+    // setState(state => ({ ...state, left: e.pageX, top: e.pageY }));
+    // SetCityWeather((cityWeather) => ({
+    //   ...cityWeather,
+    //   cityWeather: result.data,
+    // }));
+    setCityWeather({ cityWeather: result.data });
+    // setCityWeather((cityWeather) => ({
+    //   ...cityWeather,
+    //   cityWeather: result.data,
+    // }));
+    // console.log('weather of the city', cityWeather);
   };
 
-  //useEffect
   useEffect(() => {
     fetchWeather();
   }, [cities]);
+  //useEffect
+  // useEffect(() => {
+  //   fetchWeather();
+  // }, [cities]);
 
   return (
     <div className="app">
@@ -53,6 +70,10 @@ function App() {
           </option>
         ))}
       </select>
+
+      <div className="city-weather">
+        {/* <p>{result.data.weather.main}</p> */}
+      </div>
     </div>
   );
 }
