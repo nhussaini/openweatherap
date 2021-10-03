@@ -30,6 +30,7 @@ function App() {
     e.preventDefault();
     const cityId = e.target.value;
     setCities({ ...cities, cityId: cityId });
+    // fetchWeather();
   }
   const fetchWeather = async () => {
     const result = await axios.get(
@@ -41,7 +42,7 @@ function App() {
   //useEffect
   useEffect(() => {
     fetchWeather();
-  }, []);
+  }, [cities]);
 
   return (
     <div className="app">
