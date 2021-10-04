@@ -3,7 +3,7 @@
 ## Project Description
 
 Weather App is a Single Page Application(SPA) to show the current weather, the next few hours and seven days of a city.
-The weather data is fetched from [OpenWeather API](https://openweathermap.org/).
+The weather data is fetched from [OpenWeatherMap API](https://openweathermap.org/).
 
 ## Final Product
 
@@ -19,7 +19,8 @@ The weather data is fetched from [OpenWeather API](https://openweathermap.org/).
 
 ## Setup
 
-Install dependencies with `npm install`.
+- Install dependencies with `npm install`.
+- Ensure you have an API key from [OpenWeatherMap](https://openweathermap.org/) and create a .env file and add your key.
 
 ## Running Webpack Development Server
 
