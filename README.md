@@ -13,8 +13,8 @@ The weather data is fetched from OpenWeather API.
 
 ## Project Features
 
-- By default a city is chosen and the weather for the current time is display
-- The user can change the city and see the weather
+- By default a city is chosen and the weather for the current time is display.
+- The user can change the city and see the weather.
 - The user can see the weather of the next hours and seven days for a city by clicking the See Forecast button.
 
 ## Setup
