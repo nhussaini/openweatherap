@@ -4,7 +4,6 @@
 
 Weather App is a Single Page Application(SPA) to show the current weather, the next few hours and seven days of a city.
 The weather data is fetched from [OpenWeather API](https://openweathermap.org/).
-[TEXT TO SHOW](actual URL to navigate)
 
 ## Final Product
 

@@ -1,12 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+// require('dotenv').config();
 
 import './App.scss';
 import CityWeather from './components/CityWeather';
 import HourlyForecast from './components/HourlyForecast';
 import SeveDayForecast from './components/SeveDayForecast';
+// require('dotenv').config();
+const api_key = process.env.React_App_API_KEY;
 
 function App() {
+  console.log('process.env', process.env);
   //state for cities
   const [cities, setCities] = useState({
     cityId: 6167865,
@@ -46,7 +50,7 @@ function App() {
   //fetch weather data for the day
   const fetchWeather = async () => {
     const result = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?id=${cities.cityId}&units=metric&appid=538882fc8387290c6cee83f313a6acf5`
+      `https://api.openweathermap.org/data/2.5/weather?id=${cities.cityId}&units=metric&appid=${api_key}`
     );
 
     setCityWeather(result.data);
@@ -54,12 +58,12 @@ function App() {
 
   //fetch weather for hourly and seven days
   const weatherForcast = async () => {
-    const result =
-      await axios.get(`http://api.openweathermap.org/data/2.5/forecast?id=${cities.cityId}&units=metric&appid=538882fc8387290c6cee83f313a6acf5
-    `);
+    const result = await axios.get(
+      `http://api.openweathermap.org/data/2.5/forecast?id=${cities.cityId}&units=metric&appid=${api_key}`
+    );
     setForcastHourly(result.data);
     const result1 = await axios.get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${cityWeather.coord.lat}&lon=${cityWeather.coord.lon}&exclude=current,hourly,minutely,alerts&units=metric&appid=538882fc8387290c6cee83f313a6acf5`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${cityWeather.coord.lat}&lon=${cityWeather.coord.lon}&exclude=current,hourly,minutely,alerts&units=metric&appid=${api_key}`
     );
     setDaysWeather(result1.data.daily);
     setForcast(true);
