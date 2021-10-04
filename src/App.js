@@ -142,7 +142,7 @@ function App() {
             </button>
           ) : (
             <button className="see-forecast" onClick={weatherForcast}>
-              See forcast
+              See Forecast
             </button>
           )}
         </div>

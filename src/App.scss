@@ -46,4 +46,21 @@
   .weather-humidity {
     font-weight: bold;
   }
+  .see-forecast,
+  .close-forecast {
+    border: 1px solid #3498db;
+    width: 20rem;
+    background: none;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    color: #3498db;
+    border-radius: 1%;
+    transition: 0.8s ease-in-out;
+    &:hover {
+      color: #fff;
+      background-color: #3498db;
+    }
+  }
 }
