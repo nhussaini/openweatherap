@@ -1,8 +1,8 @@
 /*************select*****************/
 .select-container {
   text-align: center;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
   .select {
     width: 20rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
@@ -18,4 +18,32 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  .city-name {
+    font-size: 3rem;
+  }
+  .weather-description {
+    font-size: 1rem;
+    // margin-top: 1rem;
+  }
+  .weather-icon {
+    width: 8%;
+    // margin-top: -2rem;
+    // margin-bottom: -2rem;
+  }
+  .weather-degree {
+    font-size: 3rem;
+  }
+  .weather-min-max {
+    font-weight: bold;
+    .highest-degree {
+      margin-right: 1rem;
+    }
+  }
+  .weather-feel-like {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .weather-humidity {
+    font-weight: bold;
+  }
 }

@@ -123,18 +123,18 @@ function App() {
 
           {/* <p>{cityWeather.weather[0].icon}</p> */}
 
-          <p className="weather-degree">
-            {Math.floor(cityWeather.main.temp)} °c
-          </p>
+          <p className="weather-degree">{Math.floor(cityWeather.main.temp)}°</p>
           <p className="weather-min-max">
-            <span>Min : {Math.floor(cityWeather.main.temp_min)} </span>
-            <span>Max : {Math.floor(cityWeather.main.temp_max)}</span>
+            <span className="highest-degree">
+              H:{Math.floor(cityWeather.main.temp_max)}°{' '}
+            </span>
+            <span>L:{Math.floor(cityWeather.main.temp_min)}° </span>
           </p>
           <p className="weather-feel-like">
-            feels like: {Math.floor(cityWeather.main.feels_like)} °c
+            Feels Like:{Math.floor(cityWeather.main.feels_like)}°
           </p>
           <p className="weather-humidity">
-            humidity: {Math.floor(cityWeather.main.humidity)}
+            Humidity: {Math.floor(cityWeather.main.humidity)}
           </p>
           {forcast ? (
             <button className="close-forecast" onClick={closeForeCast}>
