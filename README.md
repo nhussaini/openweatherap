@@ -9,7 +9,7 @@ The weather data is fetched from OpenWeather API.
 
 #### _Weather APP View_
 
-!["Weather App View"]()
+!["Weather App View"](https://github.com/nhussaini/openweatherap/blob/master/docs/demo.gif?raw=true)
 
 ## Project Features
 
