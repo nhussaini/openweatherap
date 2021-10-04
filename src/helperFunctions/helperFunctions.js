@@ -11,6 +11,14 @@ function convertDt(dt) {
   return time;
 }
 
+//This function will get the name of the day from unixtimestamp
+function getDay(timestamp) {
+  let a = new Date(timestamp * 1000);
+  let weekday = a.toLocaleString('default', { weekday: 'long' });
+  return weekday;
+}
+
 module.exports = {
   convertDt,
+  getDay,
 };
