@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   //state for cities
@@ -110,7 +110,8 @@ function App() {
       {cityWeather.name && (
         <div className="city-weather">
           {/* <p>Toronto</p> */}
-          <p>time: {convertDt(cityWeather.dt)}</p>
+          {/* <p>time: {convertDt(cityWeather.dt)}</p> */}
+          <p>{cityWeather.name}</p>
           <p>{cityWeather.weather[0].description}</p>
           <img
             src={`http://openweathermap.org/img/wn/${cityWeather.weather[0].icon}.png`}
