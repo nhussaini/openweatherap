@@ -67,7 +67,7 @@ function App() {
     const result1 = await axios.get(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${cityWeather.coord.lat}&lon=${cityWeather.coord.lon}&exclude=current,hourly,minutely,alerts&units=metric&appid=538882fc8387290c6cee83f313a6acf5`
     );
-    // console.log('7 days forcast :', result1.data.daily);
+    console.log('7 days forcast :', result1.data.daily);
     setDaysWeather(result1.data.daily);
     setForcast(true);
   };
@@ -112,8 +112,6 @@ function App() {
 
       {cityWeather.name && (
         <div className="city-weather">
-          {/* <p>Toronto</p> */}
-          {/* <p>time: {convertDt(cityWeather.dt)}</p> */}
           <p className="city-name">{cityWeather.name}</p>
           <p className="weather-description">
             {cityWeather.weather[0].description}
@@ -123,8 +121,6 @@ function App() {
             src={`http://openweathermap.org/img/wn/${cityWeather.weather[0].icon}.png`}
             alt="how the weather is..."
           />
-
-          {/* <p>{cityWeather.weather[0].icon}</p> */}
 
           <p className="weather-degree">{Math.floor(cityWeather.main.temp)}°</p>
           <p className="weather-min-max">
@@ -155,22 +151,38 @@ function App() {
      <p>{item.main.temp}</p>)</div>} */}
 
       {forcast && (
-        <div className="hourly-forecast-container">
-          {forcastHourly.list.slice(0, 8).map((item) => (
-            <div className="hourly-forecast" key={item.dt}>
-              <p className="time">{convertDt(item.dt)}</p>
-              <p className="description">{item.weather[0].description}</p>
-              <div className="image-container">
-                <img
-                  className="hourly-icon"
-                  src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
-                  alt="how the weather is..."
-                />
+        <>
+          <div className="hourly-forecast-container">
+            {forcastHourly.list.slice(0, 7).map((item) => (
+              <div className="hourly-forecast" key={item.dt}>
+                <p className="time">{convertDt(item.dt)}</p>
+                <p className="description">{item.weather[0].description}</p>
+                <div className="image-container">
+                  <img
+                    className="hourly-icon"
+                    src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
+                    alt="how the weather is..."
+                  />
+                </div>
+                <p className="temperature">{Math.floor(item.main.temp)}°</p>
               </div>
-              <p className="temperature">{Math.floor(item.main.temp)}°</p>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+          <div className="seven-day-forecast-container">
+            {daysWeather.map((day) => (
+              <div className="seven-day-forecast" key={day.dt}>
+                <p>{day.dt}</p>
+                <div className="icon-container">
+                  <img
+                    src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                    alt="how the weather looks"
+                  />
+                </div>
+                <p>{day.temp.day}</p>
+              </div>
+            ))}
+          </div>
+        </>
       )}
     </div>
   );
