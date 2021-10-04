@@ -29,6 +29,7 @@ function App() {
   const [cityWeather, setCityWeather] = useState({});
   //state to forcast the future hours for a city
   const [forcastHourly, setForcastHourly] = useState({});
+  const [forcast, setForcast] = useState(false);
 
   //handle the changes in the select
   function handleChange(e) {
@@ -62,6 +63,10 @@ function App() {
     `);
     console.log('weather forcast:', result.data);
     setForcastHourly(result.data);
+    setForcast(true);
+    // const hourlyWeatherForcast = forcastHourly.list.slice(0, 5).map((item) => {
+    //   return <p>item.main.temp</p>;
+    // });
   };
 
   useEffect(() => {
@@ -113,6 +118,18 @@ function App() {
           <button className="see-forcast" onClick={weatherForcast}>
             See forcast
           </button>
+        </div>
+      )}
+
+      {/* {forcast && <div className="hourly-forcast">{forcastHourly.list.slice(0, 5).map((item) => (
+     <p>{item.main.temp}</p>)</div>} */}
+
+      {forcast && (
+        <div>
+          {forcastHourly.list.slice(0, 5).map((item) => (
+            <p key={item.dt}>{item.main.temp}</p>
+          ))}
+          <p>hourly forcast</p>
         </div>
       )}
     </div>
