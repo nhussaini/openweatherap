@@ -106,3 +106,70 @@
     }
   }
 }
+
+/***************Mobile View*********************/
+@media (max-width: 415px) {
+  .select-container {
+    margin-left: 2rem;
+    .select {
+      width: 15rem;
+      font-size: 1rem;
+    }
+  }
+
+  .city-weather {
+    .weather-icon {
+      width: 10%;
+      // margin-top: -2rem;
+      // margin-bottom: -2rem;
+    }
+
+    .see-forecast,
+    .close-forecast {
+      margin-left: 1rem;
+      width: 10rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+  }
+
+  .hourly-forecast-container {
+    .hourly-forecast {
+      width: 5rem;
+      margin-left: 0.2rem;
+    }
+    .time,
+    .description,
+    .image-container,
+    .temperature {
+      text-align: center;
+      font-size: 0.5rem;
+    }
+    .description {
+      display: none;
+    }
+  }
+
+  .seven-day-forecast-container {
+    display: flex;
+    justify-content: center;
+
+    .seven-day-forecast {
+      width: 5rem;
+      margin-left: 0.2rem;
+      margin-top: 1rem;
+      border-radius: 2rem;
+      background: #87cefa;
+      color: #fff;
+      .time,
+      .icon-container,
+      .temp {
+        text-align: center;
+        font-size: 0.5rem;
+      }
+      .time {
+        padding-top: 0.2rem;
+      }
+    }
+  }
+}
