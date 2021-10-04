@@ -89,6 +89,11 @@ function App() {
     }
     return time;
   }
+
+  function closeForeCast() {
+    setForcast(false);
+  }
+
   return (
     <div className="app">
       <select onChange={(e) => handleChange(e)}>
@@ -103,8 +108,12 @@ function App() {
         <div className="city-weather">
           {/* <p>Toronto</p> */}
           <p>time: {convertDt(cityWeather.dt)}</p>
-
           <p>{cityWeather.weather[0].description}</p>
+          <img
+            src={`http://openweathermap.org/img/wn/${cityWeather.weather[0].icon}.png`}
+            alt="how the weather is..."
+          />
+
           {/* <p>{cityWeather.weather[0].icon}</p> */}
 
           <p>{Math.floor(cityWeather.main.temp)} °c</p>
@@ -114,10 +123,15 @@ function App() {
           </p>
           <p>feels like: {Math.floor(cityWeather.main.feels_like)} °c</p>
           <p>humidity: {Math.floor(cityWeather.main.humidity)}</p>
-
-          <button className="see-forcast" onClick={weatherForcast}>
-            See forcast
-          </button>
+          {forcast ? (
+            <button className="close-forecast" onClick={closeForeCast}>
+              Close
+            </button>
+          ) : (
+            <button className="see-forecast" onClick={weatherForcast}>
+              See forcast
+            </button>
+          )}
         </div>
       )}
 
@@ -129,13 +143,14 @@ function App() {
           {forcastHourly.list.slice(0, 5).map((item) => (
             <div className="hourly-forecast" key={item.dt}>
               <p>{convertDt(item.dt)}</p>
+              <p>{item.weather[0].description}</p>
               <img
                 src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
+                alt="how the weather is..."
               />
               <p>{Math.floor(item.main.temp)}°</p>
             </div>
           ))}
-          <p>hourly forcast</p>
         </div>
       )}
     </div>
