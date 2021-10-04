@@ -35,9 +35,10 @@ function App() {
 
   //handle the changes in the select
   function handleChange(e) {
-    e.preventDefault();
+    // e.preventDefault();
     const cityId = e.target.value;
     setCities({ ...cities, cityId: cityId });
+    setForcast(false);
     // fetchWeather();
   }
   const fetchWeather = async () => {
