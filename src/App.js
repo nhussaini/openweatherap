@@ -111,22 +111,31 @@ function App() {
         <div className="city-weather">
           {/* <p>Toronto</p> */}
           {/* <p>time: {convertDt(cityWeather.dt)}</p> */}
-          <p>{cityWeather.name}</p>
-          <p>{cityWeather.weather[0].description}</p>
+          <p className="city-name">{cityWeather.name}</p>
+          <p className="weather-description">
+            {cityWeather.weather[0].description}
+          </p>
           <img
+            className="weather-icon"
             src={`http://openweathermap.org/img/wn/${cityWeather.weather[0].icon}.png`}
             alt="how the weather is..."
           />
 
           {/* <p>{cityWeather.weather[0].icon}</p> */}
 
-          <p>{Math.floor(cityWeather.main.temp)} °c</p>
-          <p>
+          <p className="weather-degree">
+            {Math.floor(cityWeather.main.temp)} °c
+          </p>
+          <p className="weather-min-max">
             <span>Min : {Math.floor(cityWeather.main.temp_min)} </span>
             <span>Max : {Math.floor(cityWeather.main.temp_max)}</span>
           </p>
-          <p>feels like: {Math.floor(cityWeather.main.feels_like)} °c</p>
-          <p>humidity: {Math.floor(cityWeather.main.humidity)}</p>
+          <p className="weather-feel-like">
+            feels like: {Math.floor(cityWeather.main.feels_like)} °c
+          </p>
+          <p className="weather-humidity">
+            humidity: {Math.floor(cityWeather.main.humidity)}
+          </p>
           {forcast ? (
             <button className="close-forecast" onClick={closeForeCast}>
               Close
