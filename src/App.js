@@ -30,6 +30,8 @@ function App() {
   //state to forcast the future hours for a city
   const [forcastHourly, setForcastHourly] = useState({});
   const [forcast, setForcast] = useState(false);
+  //state for future days
+  const [daysWeather, setDaysWeather] = useState({});
 
   //handle the changes in the select
   function handleChange(e) {
@@ -61,12 +63,13 @@ function App() {
     const result =
       await axios.get(`http://api.openweathermap.org/data/2.5/forecast?id=${cities.cityId}&units=metric&appid=538882fc8387290c6cee83f313a6acf5
     `);
-    console.log('weather forcast:', result.data);
     setForcastHourly(result.data);
+    const result1 = await axios.get(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${cityWeather.coord.lat}&lon=${cityWeather.coord.lon}&exclude=current,hourly,minutely,alerts&units=metric&appid=538882fc8387290c6cee83f313a6acf5`
+    );
+    // console.log('7 days forcast :', result1.data.daily);
+    setDaysWeather(result1.data.daily);
     setForcast(true);
-    // const hourlyWeatherForcast = forcastHourly.list.slice(0, 5).map((item) => {
-    //   return <p>item.main.temp</p>;
-    // });
   };
 
   useEffect(() => {
