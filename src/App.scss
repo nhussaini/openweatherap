@@ -86,3 +86,23 @@
     text-align: center;
   }
 }
+
+/*****************seven day forecast*********************/
+.seven-day-forecast-container {
+  display: flex;
+  justify-content: center;
+
+  .seven-day-forecast {
+    width: 8rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    border-radius: 2rem;
+    background: #87cefa;
+    color: #fff;
+    .time,
+    .icon-container,
+    .temp {
+      text-align: center;
+    }
+  }
+}

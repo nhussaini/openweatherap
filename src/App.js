@@ -169,16 +169,17 @@ function App() {
             ))}
           </div>
           <div className="seven-day-forecast-container">
-            {daysWeather.map((day) => (
+            {daysWeather.slice(1).map((day) => (
               <div className="seven-day-forecast" key={day.dt}>
-                <p>{day.dt}</p>
+                <p className="time">{day.dt}</p>
                 <div className="icon-container">
                   <img
+                    className="img-container"
                     src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
                     alt="how the weather looks"
                   />
                 </div>
-                <p>{day.temp.day}</p>
+                <p className="temp">{day.temp.day}</p>
               </div>
             ))}
           </div>
