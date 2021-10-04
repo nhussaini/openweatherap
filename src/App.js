@@ -90,19 +90,22 @@ function App() {
     return time;
   }
 
+  //close the hourlyforecase
   function closeForeCast() {
     setForcast(false);
   }
 
   return (
     <div className="app">
-      <select onChange={(e) => handleChange(e)}>
-        {cities.cityInfo.map((item) => (
-          <option key={item.id} value={item.id}>
-            {item.name}
-          </option>
-        ))}
-      </select>
+      <div className="select-container">
+        <select className="select" onChange={(e) => handleChange(e)}>
+          {cities.cityInfo.map((item) => (
+            <option className="option" key={item.id} value={item.id}>
+              {item.name}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {cityWeather.name && (
         <div className="city-weather">
