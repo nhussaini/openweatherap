@@ -83,9 +83,9 @@ function App() {
     const hour = date.getHours();
     let time = '';
     if (hour > 12) {
-      time = hour - 12 + ' pm';
+      time = hour - 12 + 'PM';
     } else {
-      time = hour + ' am';
+      time = hour + 'AM';
     }
     return time;
   }
@@ -125,9 +125,15 @@ function App() {
      <p>{item.main.temp}</p>)</div>} */}
 
       {forcast && (
-        <div>
+        <div className="hourly-forecast-container">
           {forcastHourly.list.slice(0, 5).map((item) => (
-            <p key={item.dt}>{item.main.temp}</p>
+            <div className="hourly-forecast" key={item.dt}>
+              <p>{convertDt(item.dt)}</p>
+              <img
+                src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
+              />
+              <p>{Math.floor(item.main.temp)}°</p>
+            </div>
           ))}
           <p>hourly forcast</p>
         </div>
