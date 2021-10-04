@@ -93,6 +93,13 @@ function App() {
     return time;
   }
 
+  //This function will get the name of the day from unixtimestamp
+  function getDay(timestamp) {
+    let a = new Date(timestamp * 1000);
+    let weekday = a.toLocaleString('default', { weekday: 'long' });
+    return weekday;
+  }
+
   //close the hourlyforecase
   function closeForeCast() {
     setForcast(false);
@@ -171,7 +178,7 @@ function App() {
           <div className="seven-day-forecast-container">
             {daysWeather.slice(1).map((day) => (
               <div className="seven-day-forecast" key={day.dt}>
-                <p className="time">{day.dt}</p>
+                <p className="time">{getDay(day.dt)}</p>
                 <div className="icon-container">
                   <img
                     className="img-container"
@@ -179,7 +186,7 @@ function App() {
                     alt="how the weather looks"
                   />
                 </div>
-                <p className="temp">{day.temp.day}</p>
+                <p className="temp">{Math.floor(day.temp.day)}°</p>
               </div>
             ))}
           </div>
