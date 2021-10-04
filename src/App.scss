@@ -49,7 +49,7 @@
   .see-forecast,
   .close-forecast {
     border: 1px solid #3498db;
-    width: 20rem;
+    width: 15rem;
     background: none;
     padding: 10px 20px;
     font-size: 1.5rem;
@@ -62,5 +62,26 @@
       color: #fff;
       background-color: #3498db;
     }
+  }
+}
+
+/*************hourly forecast container****************/
+.hourly-forecast-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  .hourly-forecast {
+    width: 8rem;
+    margin-left: 1rem;
+    // border: 1px solid #3498db;
+    border-radius: 2rem;
+    background: #87cefa;
+    color: #fff;
+  }
+  .time,
+  .description,
+  .image-container,
+  .temperature {
+    text-align: center;
   }
 }

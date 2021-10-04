@@ -153,15 +153,18 @@ function App() {
 
       {forcast && (
         <div className="hourly-forecast-container">
-          {forcastHourly.list.slice(0, 5).map((item) => (
+          {forcastHourly.list.slice(0, 8).map((item) => (
             <div className="hourly-forecast" key={item.dt}>
-              <p>{convertDt(item.dt)}</p>
-              <p>{item.weather[0].description}</p>
-              <img
-                src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
-                alt="how the weather is..."
-              />
-              <p>{Math.floor(item.main.temp)}°</p>
+              <p className="time">{convertDt(item.dt)}</p>
+              <p className="description">{item.weather[0].description}</p>
+              <div className="image-container">
+                <img
+                  className="hourly-icon"
+                  src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
+                  alt="how the weather is..."
+                />
+              </div>
+              <p className="temperature">{Math.floor(item.main.temp)}°</p>
             </div>
           ))}
         </div>
