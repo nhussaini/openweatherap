@@ -1,16 +1,13 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-// require('dotenv').config();
 
 import './App.scss';
 import CityWeather from './components/CityWeather';
 import HourlyForecast from './components/HourlyForecast';
 import SeveDayForecast from './components/SeveDayForecast';
-// require('dotenv').config();
 const api_key = process.env.React_App_API_KEY;
 
 function App() {
-  console.log('process.env', process.env);
   //state for cities
   const [cities, setCities] = useState({
     cityId: 6167865,
