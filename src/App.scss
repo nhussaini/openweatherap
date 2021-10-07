@@ -173,3 +173,41 @@
     }
   }
 }
+
+@media (max-width: 321px) {
+  .hourly-forecast-container {
+    .hourly-forecast {
+      width: 3rem;
+      margin-left: 0.01rem;
+    }
+    .time,
+    .description,
+    .image-container,
+    .temperature {
+      text-align: center;
+      font-size: 0.4rem;
+    }
+    .description {
+      display: none;
+    }
+  }
+
+  .seven-day-forecast-container {
+    .seven-day-forecast {
+      width: 3rem;
+      margin-left: 0.01rem;
+      border-radius: 2rem;
+      background: #87cefa;
+      color: #fff;
+      .time,
+      .icon-container,
+      .temp {
+        text-align: center;
+        font-size: 0.4rem;
+      }
+      .time {
+        padding-top: 0.2rem;
+      }
+    }
+  }
+}
